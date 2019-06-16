@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Web Test Client Rules" Description="Code Analysis Rules for Web Test Client" ToolsVersion="15.0">
+  <IncludeAll Action="Error" />
+</RuleSet>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Dictionary>
+  <Words>
+    <Recognized>
+      <Word>contentType</Word>
+      <Word>entityBody</Word>
+    </Recognized>
+    <DiscreteExceptions>
+      <Term>contentType</Term>
+      <Term>entityBody</Term>
+    </DiscreteExceptions>
+  </Words>
+</Dictionary>

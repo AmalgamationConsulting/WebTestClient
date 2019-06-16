@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema
+  targetNamespace="https://raw.githubusercontent.com/AmalgamationConsulting/WebTestClient/master/WebTestClient/Configuration.xsd"
+  xmlns="https://raw.githubusercontent.com/AmalgamationConsulting/WebTestClient/master/WebTestClient/Configuration.xsd"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified">
+
+  <xsd:element name="services" type="ServiceSection"/>
+
+  <xsd:complexType name="ServiceSection">
+    <xsd:sequence>
+      <xsd:element name="clear" minOccurs="0" maxOccurs="1">
+        <xsd:complexType/>
+      </xsd:element>
+      <xsd:element name="remove" minOccurs="0" maxOccurs="unbounded">
+        <xsd:complexType>
+          <xsd:attribute name="name" type="String.MinLength1" use="required"/>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="application" type="ApplicationElement" minOccurs="1" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="ApplicationElement">
+    <xsd:sequence>
+      <xsd:element name="service" type="ServiceElement" minOccurs="1" maxOccurs="unbounded"/>
+    </xsd:sequence>
+    <xsd:attribute name="name" type="String.MinLength1" use="required"/>
+  </xsd:complexType>
+
+  <xsd:complexType name="ServiceElement">
+    <xsd:attribute name="address" type="xsd:anyURI" use="required"/>
+    <xsd:attribute name="contentType" type="ContentType" use="optional"/>
+    <xsd:attribute name="entityBody" type="String.MinLength1" use="optional"/>
+    <xsd:attribute name="method" type="HttpMethod" use="required"/>
+    <xsd:attribute name="name" type="String.MinLength1" use="required"/>
+  </xsd:complexType>
+
+  <xsd:simpleType name="ContentType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="application/json"/>
+      <xsd:enumeration value="application/x-www-form-urlencoded"/>
+      <xsd:enumeration value="multipart/form-data"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="HttpMethod">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="GET"/>
+      <xsd:enumeration value="POST"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="String.MinLength1">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>
